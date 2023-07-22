@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   swap_op.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpedroso <mpedroso@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 19:36:11 by migas             #+#    #+#             */
-/*   Updated: 2023/07/22 01:43:26 by mpedroso         ###   ########.fr       */
+/*   Created: 2023/07/21 23:50:56 by mpedroso          #+#    #+#             */
+/*   Updated: 2023/07/22 01:09:06 by mpedroso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_swap(t_node **stack)
 {
-	t_node	*temp;
+	t_node	*first;
+	t_node	*second;
 
-	if (argc < 2)
-	{
-		write (1, "Error!", 7);
-		return (0);
-	}
-	else if (!(fill_stack(&argv[1])))
-	{
-		write (1, "Error!", 7);
-		return (0);
-	}
-	ft_ra();
-	temp = stacks()->a;
-	while (temp)
-	{
-		printf("Stack a: %i\n", temp->value);
-		temp = temp->next;
-	}
-	return (0);
+	first = *stack;
+	second = (*stack)->next;
+	first->next = second->next;
+	second->next = first;
+	*stack = second;
+}
+
+void	ft_sa(void)
+{
+	ft_swap(&stacks()->a);
+	write(1, "sa\n", 3);
+}
+
+void	ft_sb(void)
+{
+	ft_swap(&stacks()->b);
+	write(1, "sb\n", 3);
+}
+
+void	ft_ss(void)
+{
+	ft_swap(&stacks()->a);
+	ft_swap(&stacks()->b);
+	write (1, "ss\n", 3);
 }

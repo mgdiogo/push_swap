@@ -1,37 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   aux_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpedroso <mpedroso@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 19:36:11 by migas             #+#    #+#             */
-/*   Updated: 2023/07/22 01:43:26 by mpedroso         ###   ########.fr       */
+/*   Created: 2023/07/12 19:41:46 by mpedroso          #+#    #+#             */
+/*   Updated: 2023/07/21 22:35:41 by mpedroso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_atoi(char *str)
 {
-	t_node	*temp;
+	int		i;
+	long	res;
+	int		signal;
 
-	if (argc < 2)
+	i = -1;
+	res = 0;
+	signal = 1;
+	if (str[0] == '-')
 	{
-		write (1, "Error!", 7);
-		return (0);
+		signal *= -1;
+		i += 2;
 	}
-	else if (!(fill_stack(&argv[1])))
+	else if (str[0] == '+')
+		i += 2;
+	while (str[++i])
 	{
-		write (1, "Error!", 7);
-		return (0);
+		if (str[i] <= '9' && str[i] >= '0')
+			res = (res * 10) + str[i] - 48;
+		else
+		{
+			write(1, "Error!\n", 7);
+			exit(1);
+		}
 	}
-	ft_ra();
-	temp = stacks()->a;
-	while (temp)
-	{
-		printf("Stack a: %i\n", temp->value);
-		temp = temp->next;
-	}
-	return (0);
+	return (res * signal);
 }
+
+t_stacks	*stacks(void)
+{
+	static t_stacks	stacks;
+
+	return (&stacks);
+}
+
+

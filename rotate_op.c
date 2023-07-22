@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   rotate_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpedroso <mpedroso@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 19:36:11 by migas             #+#    #+#             */
-/*   Updated: 2023/07/22 01:43:26 by mpedroso         ###   ########.fr       */
+/*   Created: 2023/07/22 01:15:03 by mpedroso          #+#    #+#             */
+/*   Updated: 2023/07/22 01:40:57 by mpedroso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_rotate(t_node **stack)
 {
-	t_node	*temp;
+	t_node	*first;
+	t_node	*last;
 
-	if (argc < 2)
-	{
-		write (1, "Error!", 7);
-		return (0);
-	}
-	else if (!(fill_stack(&argv[1])))
-	{
-		write (1, "Error!", 7);
-		return (0);
-	}
-	ft_ra();
-	temp = stacks()->a;
-	while (temp)
-	{
-		printf("Stack a: %i\n", temp->value);
-		temp = temp->next;
-	}
-	return (0);
+	first = *stack;
+	last = ft_lstlast(*stack);
+	last->next = first;
+	*stack = (*stack)->next;
+	first->next = NULL;
+}
+
+void	ft_ra(void)
+{
+	ft_rotate(&stacks()->a);
+	write (1, "ra\n", 3);
+}
+
+void	ft_rb(void)
+{
+	ft_rotate(&stacks()->b);
+	write (1, "rb\n", 3);
+}
+
+void	ft_rr(void)
+{
+	ft_rotate(&stacks()->a);
+	ft_rotate(&stacks()->b);
+	write (1, "rr\n", 3);
 }

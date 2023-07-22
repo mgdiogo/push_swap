@@ -1,20 +1,23 @@
 NAME	=	push_swap
 
+RM		=	rm -rf
 CC		=	cc
+FLAGS	=	-Wall -Werror -Wextra
 
-RM		= rm -f
+SRC		=	push_swap.c aux_functions.c list_utils.c fill_stack.c \
+			push_op.c swap_op.c rotate_op.c
 
-SRC		= push_swap.c
+OBJ		=	$(SRC:.c=.o)
 
-all:	$(NAME)
+all:		$(NAME)
 
-$(NAME):
-		$(CC) -o $(NAME) $(SRC) $(FLAGS) -fsanitize=address
+$(NAME):	$(OBJ)
+			$(CC) $(SRC) $(FLAGS) -o $(NAME)
 
 clean:
-		$(RM) $(OBJ)
+			$(RM) $(OBJ)
 
-fclean:
-		$(RM) $(NAME)
+fclean:		clean
+			$(RM) $(NAME)
 
-re:		fclean all
+re:			fclean all
