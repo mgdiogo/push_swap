@@ -6,7 +6,7 @@
 /*   By: mpedroso <mpedroso@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:36:05 by migas             #+#    #+#             */
-/*   Updated: 2023/07/22 01:43:02 by mpedroso         ###   ########.fr       */
+/*   Updated: 2023/07/23 21:08:59 by mpedroso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,9 @@ void				ft_rotate(t_node **stack);
 void				ft_ra(void);
 void				ft_rb(void);
 void				ft_rr(void);
+void				ft_reverse(t_node **stack);
+void				ft_rra(void);
+void				ft_rrb(void);
+void				ft_rrr(void);
 
 #endif

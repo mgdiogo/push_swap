@@ -6,7 +6,7 @@
 /*   By: mpedroso <mpedroso@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:36:11 by migas             #+#    #+#             */
-/*   Updated: 2023/07/22 01:43:26 by mpedroso         ###   ########.fr       */
+/*   Updated: 2023/07/23 21:09:11 by mpedroso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 		write (1, "Error!", 7);
 		return (0);
 	}
-	ft_ra();
+	ft_rra();
 	temp = stacks()->a;
 	while (temp)
 	{
