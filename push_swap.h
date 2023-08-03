@@ -6,7 +6,7 @@
 /*   By: mpedroso <mpedroso@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:36:05 by migas             #+#    #+#             */
-/*   Updated: 2023/07/23 21:08:59 by mpedroso         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:01:29 by mpedroso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -26,7 +27,7 @@ typedef struct s_stacks
 {
 	t_node			*a;
 	t_node			*b;
-	t_node			*double_check;
+	t_node			*aux_sorted_stack;
 }					t_stacks;
 
 int					ft_atoi(char *str);
@@ -51,5 +52,16 @@ void				ft_reverse(t_node **stack);
 void				ft_rra(void);
 void				ft_rrb(void);
 void				ft_rrr(void);
+void				sort_list_reverse(void);
+void				handle_frees(t_node *stack);
+void				free_stacks(void);
+int					find_sl(t_node *stack);
+void				sort_five(t_node *stack, int second_last);
+void				sort_list(int chunk, int div, int mod);
+int					find_smallest(t_node **sorted, int chunk);
+void				send_b(int chunk, int div, int min, int max);
+void				sort_b(void);
+int					check_sorted(void);
+int					check_doubles(void);
 
 #endif

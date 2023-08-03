@@ -6,7 +6,7 @@
 /*   By: mpedroso <mpedroso@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:41:46 by mpedroso          #+#    #+#             */
-/*   Updated: 2023/07/21 22:35:41 by mpedroso         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:25:50 by mpedroso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	ft_atoi(char *str)
 	if (str[0] == '-')
 	{
 		signal *= -1;
-		i += 2;
+		i++;
 	}
 	else if (str[0] == '+')
-		i += 2;
+		i++;
 	while (str[++i])
 	{
 		if (str[i] <= '9' && str[i] >= '0')
@@ -48,4 +48,47 @@ t_stacks	*stacks(void)
 	return (&stacks);
 }
 
+void	sort_list_reverse(void)
+{
+	t_node	*lst;
+	int		temp;
+	int		swapped;
+
+	swapped = 0;
+	while (!swapped)
+	{
+		lst = stacks()->aux_sorted_stack;
+		swapped = 1;
+		while (lst->next)
+		{
+			if (lst->value < lst->next->value)
+			{
+				temp = lst->value;
+				lst->value = lst->next->value;
+				lst->next->value = temp;
+				swapped = 0;
+			}
+			lst = lst->next;
+		}
+	}
+}
+
+void	handle_frees(t_node *stack)
+{
+	t_node	*temp;
+
+	while (stack)
+	{
+		temp = stack->next;
+		free(stack);
+		stack = temp;
+	}
+}
+
+void	free_stacks(void)
+{
+	handle_frees(stacks()->a);
+	handle_frees(stacks()->b);
+	handle_frees(stacks()->aux_sorted_stack);
+}
 

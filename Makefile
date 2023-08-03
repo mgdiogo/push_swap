@@ -5,7 +5,8 @@ CC		=	cc
 FLAGS	=	-Wall -Werror -Wextra
 
 SRC		=	push_swap.c aux_functions.c list_utils.c fill_stack.c \
-			push_op.c swap_op.c rotate_op.c reverse_op.c
+			push_op.c swap_op.c rotate_op.c reverse_op.c verifications.c \
+			sorts.c
 
 OBJ		=	$(SRC:.c=.o)
 
